@@ -22,7 +22,8 @@ export function getItem(cards, position) {
  * @returns {number[]} the cards with the change applied
  */
 export function setItem(cards, position, replacementCard) {
-  cards[position] = replacementCard; return cards;
+  cards[position] = replacementCard; 
+  return cards;
 }
 
 /**
@@ -34,7 +35,8 @@ export function setItem(cards, position, replacementCard) {
  * @returns {number[]} the cards with the newCard applied
  */
 export function insertItemAtTop(cards, newCard) {
-  cards.push(newCard); return cards;
+  cards.push(newCard); 
+  return cards;
 }
 
 /**
@@ -46,7 +48,8 @@ export function insertItemAtTop(cards, newCard) {
  * @returns {number[]} the cards without the removed card
  */
 export function removeItem(cards, position) {
-  cards.splice(position, 1); return cards;
+  cards.splice(position, 1); 
+  return cards;
 }
 
 /**
@@ -57,7 +60,8 @@ export function removeItem(cards, position) {
  * @returns {number[]} the cards without the removed card
  */
 export function removeItemFromTop(cards) {
-  cards.pop(); return cards;
+  cards.pop(); 
+  return cards;
 }
 
 /**
@@ -69,7 +73,8 @@ export function removeItemFromTop(cards) {
  * @returns {number[]} the cards including the new card
  */
 export function insertItemAtBottom(cards, newCard) {
-  cards.unshift(newCard); return cards;
+  cards.unshift(newCard); 
+  return cards;
 }
 
 /**
@@ -80,7 +85,8 @@ export function insertItemAtBottom(cards, newCard) {
  * @returns {number[]} the cards without the removed card
  */
 export function removeItemAtBottom(cards) {
-  cards.shift(); return cards;
+  cards.shift();
+  return cards;
 }
 
 /**
