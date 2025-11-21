@@ -10,8 +10,8 @@
  * @param {...number} ids
  * @returns {number[]} wagon ids
  */
-export function getListOfWagons(a, b, c, d, e, f, g, h, i, j, k, l, m, n) {
-  throw new Error('Remove this line and implement the function');
+export function getListOfWagons(...ids) { // J'ai du amener un changement à l'exercice pour qu'il fonctionne, de ce que je voyais, le "a, b, c, d, e, f, g, h, i, j, k, l, m, n" sortait des erreurs. Aussi les exercices suivant ont "ids" comme proprieté.  
+  return ids
 }
 
 /**
@@ -21,7 +21,8 @@ export function getListOfWagons(a, b, c, d, e, f, g, h, i, j, k, l, m, n) {
  * @returns {number[]} reordered list of wagons
  */
 export function fixListOfWagons(ids) {
-  throw new Error('Remove this line and implement the function');
+  const [firstElement, secondElement, ...everythingElse] = ids
+  return [...everythingElse, firstElement, secondElement]
 }
 
 /**
@@ -32,7 +33,8 @@ export function fixListOfWagons(ids) {
  * @returns {number[]} corrected list of wagons
  */
 export function correctListOfWagons(ids, missingWagons) {
-  throw new Error('Remove this line and implement the function');
+  const [locomotive, ...otherWagons] = ids
+  return [locomotive, ...missingWagons, ...otherWagons]
 }
 
 /**
@@ -43,7 +45,7 @@ export function correctListOfWagons(ids, missingWagons) {
  * @returns {Record<string, string>} extended route information
  */
 export function extendRouteInformation(information, additional) {
-  throw new Error('Remove this line and implement the function');
+  return {...information, ...additional}
 }
 
 /**
@@ -53,5 +55,6 @@ export function extendRouteInformation(information, additional) {
  * @returns {[string, Record<string, string>]} array with arrival time and object without arrival time
  */
 export function separateTimeOfArrival(information) {
-  throw new Error('Remove this line and implement the function');
+  const {timeOfArrival, ...rest} = information
+  return [timeOfArrival, rest]
 }
