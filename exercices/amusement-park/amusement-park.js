@@ -10,7 +10,12 @@
  * @returns {Visitor} the visitor that was created
  */
 export function createVisitor(name, age, ticketId) {
-  throw new Error('Remove this line and implement the function');
+  const obj = {
+    name: name,
+    age: age,
+    ticketId: ticketId
+  }
+  return obj
 }
 
 /**
@@ -20,7 +25,8 @@ export function createVisitor(name, age, ticketId) {
  * @returns {Visitor} the visitor without a ticket
  */
 export function revokeTicket(visitor) {
-  throw new Error('Remove this line and implement the function');
+  visitor.ticketId = null
+  return visitor
 }
 
 /**
@@ -31,7 +37,15 @@ export function revokeTicket(visitor) {
  * @returns {string} ticket status
  */
 export function ticketStatus(tickets, ticketId) {
-  throw new Error('Remove this line and implement the function');
+  const name = tickets[ticketId];
+  switch (name) {
+    case undefined:
+      return 'unknown ticket id';
+    case null:
+      return 'not sold';
+    default:
+      return `sold to ${name}`;
+  }
 }
 
 /**
@@ -43,7 +57,14 @@ export function ticketStatus(tickets, ticketId) {
  * @returns {string} ticket status
  */
 export function simpleTicketStatus(tickets, ticketId) {
-  throw new Error('Remove this line and implement the function');
+  const name = tickets[ticketId];
+  switch (name) {
+    case null:
+    case undefined:
+      return 'invalid ticket !!!';
+    default:
+      return `${name}`;
+  }
 }
 
 /**
@@ -53,5 +74,6 @@ export function simpleTicketStatus(tickets, ticketId) {
  * @returns {string | undefined} version
  */
 export function gtcVersion(visitor) {
-  throw new Error('Remove this line and implement the function');
+  if (visitor.gtc == undefined || visitor.gtc.version == null) return undefined
+  else return visitor.gtc.version
 }
