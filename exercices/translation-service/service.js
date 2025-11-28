@@ -27,7 +27,7 @@ export class TranslationService {
    * @returns {Promise<string>}
    */
   free(text) {
-    throw new Error('Implement the free function');
+    return this.api.fetch(text).then((result) => result.translation);
   }
 
   /**
@@ -41,7 +41,20 @@ export class TranslationService {
    * @returns {Promise<string[]>}
    */
   batch(texts) {
-    throw new Error('Implement the batch function');
+    // let nbOfTexts = texts.length;
+    // let nbOfValidTests = 0;
+
+    // if (nbOfTexts === 0) {
+    //   return Promise.reject(new BatchIsEmpty())
+    // }
+
+    // texts.forEach((text) => {
+    //   this.free(text)
+    // })
+
+    // if (nbOfTexts == nbOfValidTests) {
+    //   return promise.
+    // }
   }
 
   /**
