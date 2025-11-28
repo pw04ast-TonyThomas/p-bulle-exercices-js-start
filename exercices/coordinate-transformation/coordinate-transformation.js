@@ -15,7 +15,9 @@
  *  translated coordinate pair in the form [x, y]
  */
 export function translate2d(dx, dy) {
-  throw new Error('Remove this line and implement the function');
+  return function innerTranslate(x, y) { // Je recois une erreur que le type est 'any' mais pourtant sa fonctionne et je ne peux pas penser d'autre solutions.
+    return [x + dx, y + dy]
+  }
 }
 
 /**
@@ -29,7 +31,9 @@ export function translate2d(dx, dy) {
  *  scaled coordinate pair in the form [x, y]
  */
 export function scale2d(sx, sy) {
-  throw new Error('Remove this line and implement the function');
+  return function scale(x,y) { // Encore une fois
+    return [x * sx, y * sy];
+  }
 }
 
 /**
@@ -43,7 +47,9 @@ export function scale2d(sx, sy) {
  *  transformed coordinate pair in the form [x, y]
  */
 export function composeTransform(f, g) {
-  throw new Error('Remove this line and implement the function');
+  return function composed(x, y) {
+    return g(...f(x, y)) // on fait la fonction f le nombre de fois qu'on doit et ensuite on met le résultat dans g que l'on retourne ensuite.
+  }
 }
 
 /**
@@ -56,5 +62,17 @@ export function composeTransform(f, g) {
  *  if the arguments are the same on subsequent calls, or compute a new result if they are different.
  */
 export function memoizeTransform(f) {
-  throw new Error('Remove this line and implement the function');
+  let oldX = 0;
+  let oldY = 0;
+  let oldResult = 0;
+
+  return function memoize(x,y) {
+    if (oldX === x && oldY === y) { // On check que les vieux x et y sont les même, si oui on return le vieux result.
+      return oldResult
+    }
+
+    oldX = x
+    oldY = y
+    return oldResult = f(x,y) 
+  }
 }
