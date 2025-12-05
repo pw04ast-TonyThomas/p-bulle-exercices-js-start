@@ -41,6 +41,12 @@ export class TranslationService {
    * @returns {Promise<string[]>}
    */
   batch(texts) {
+    if (texts.length == 0) {
+      return Promise.reject(new BatchIsEmpty())
+    }  
+
+    return Promise.all(texts.map(this.free.bind(this)))
+
     // let nbOfTexts = texts.length;
     // let nbOfValidTests = 0;
 
@@ -67,7 +73,21 @@ export class TranslationService {
    * @returns {Promise<void>}
    */
   request(text) {
-    throw new Error('Implement the request function');
+    const promise = () => new Promise((resolve, reject) => {
+      this.api.request(text, (result) => {
+        result ? reject(result) : resolve();
+      })
+    })
+
+    return promise()
+    // const promise1 = new Promise((resolve, reject) => {
+    //   if (attemptNb < 3){
+    //   this.api.fetch(text)
+    //   attemptNb++
+    //   }
+    // })
+
+    // promise1.catch(this.request)
   }
 
   /**
