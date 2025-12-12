@@ -1,4 +1,4 @@
-// @ts-check
+// ts-check
 
 export class ArgumentError extends Error {}
 
@@ -16,7 +16,9 @@ export class OverheatingError extends Error {
  * @throws {Error}
  */
 export function checkHumidityLevel(humidityPercentage) {
-  throw new Error('Remove this line and implement the function');
+  if (humidityPercentage > 70) {
+    throw new Error;
+  }
 }
 
 /**
@@ -26,7 +28,9 @@ export function checkHumidityLevel(humidityPercentage) {
  * @throws {ArgumentError|OverheatingError}
  */
 export function reportOverheating(temperature) {
-  throw new Error('Remove this line and implement the function');
+  if (temperature == null) throw new ArgumentError()
+  else if (temperature > 500) throw new OverheatingError(temperature)
+  
 }
 
 /**
@@ -41,5 +45,14 @@ export function reportOverheating(temperature) {
  * @throws {ArgumentError|OverheatingError|Error}
  */
 export function monitorTheMachine(actions) {
-  throw new Error('Remove this line and implement the function');
+  try {
+    actions.check()
+  } catch (error) {
+    if (error instanceof ArgumentError) { actions.alertDeadSensor() }
+    else if (error instanceof OverheatingError) { 
+      if (error.temperature < 600) actions.alertOverheating() 
+      else actions.shutdown()
+    }
+    else throw error
+  }
 }
