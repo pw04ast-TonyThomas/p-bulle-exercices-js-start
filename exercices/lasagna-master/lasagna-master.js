@@ -1,5 +1,5 @@
 /// <reference path="./global.d.ts" />
-// @ts-check
+// ts-check
 
 /**
  * Implement the functions needed to solve the exercise here.
