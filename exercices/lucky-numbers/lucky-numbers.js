@@ -31,7 +31,7 @@ export function luckyNumber(value) {
  * @param {string|null|undefined} input
  * @returns {string} error message
  */
-export function errorMessage(input) {
+export function errorMessage (input) {
   if (!input) return 'Required field'
   else if (Number.isNaN(Number(input)) || String(input).includes('0',)) return 'Must be a number besides 0'
   return ''
