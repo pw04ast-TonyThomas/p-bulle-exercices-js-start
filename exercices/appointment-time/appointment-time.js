@@ -8,8 +8,9 @@
  *
  * @returns {Date} the appointment
  */
-export function createAppointment(days, now = undefined) {
-  throw new Error('Remove this line and implement the function');
+export function createAppointment(days, now = Date.now()) {
+  let date = new Date(now)
+  return new Date(date.setDate(date.getDate() + days))
 }
 
 /**
@@ -20,7 +21,7 @@ export function createAppointment(days, now = undefined) {
  * @returns {string} timestamp
  */
 export function getAppointmentTimestamp(appointmentDate) {
-  throw new Error('Remove this line and implement the function');
+  return new Date(appointmentDate).toISOString()
 }
 
 /**
@@ -31,7 +32,7 @@ export function getAppointmentTimestamp(appointmentDate) {
  * @returns {Record<'year' | 'month' | 'date' | 'hour' | 'minute', number>} the appointment details
  */
 export function getAppointmentDetails(timestamp) {
-  throw new Error('Remove this line and implement the function');
+  let date = new Date(timestamp); return {year: date.getFullYear(), month: date.getMonth(), date: date.getDate(), hour: date.getHours(), minute: date.getMinutes() }
 }
 
 /**
@@ -43,7 +44,7 @@ export function getAppointmentDetails(timestamp) {
  * @returns {Record<'year' | 'month' | 'date' | 'hour' | 'minute', number>} the appointment details
  */
 export function updateAppointment(timestamp, options) {
-  throw new Error('Remove this line and implement the function');
+  
 }
 
 /**
@@ -55,7 +56,7 @@ export function updateAppointment(timestamp, options) {
  * @returns {number} amount of seconds (rounded)
  */
 export function timeBetween(timestampA, timestampB) {
-  throw new Error('Remove this line and implement the function');
+  // return new Date(timestampA).getTime() -  new Date(timestampB).getTime()
 }
 
 /**
