@@ -21,7 +21,7 @@ export function luckyNumber(value) {
   let valueString = value.toString();
   let part1 = valueString.slice(0, Math.ceil(valueString.length / 2));
   let part2 = valueString.slice(valueString.length / 2, valueString.length).split("").reverse().join("");
-  return (part1 == part2)
+  return (part1 === part2)
 }
 
 /**
