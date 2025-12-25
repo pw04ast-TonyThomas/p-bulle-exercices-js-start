@@ -44,7 +44,15 @@ export function getAppointmentDetails(timestamp) {
  * @returns {Record<'year' | 'month' | 'date' | 'hour' | 'minute', number>} the appointment details
  */
 export function updateAppointment(timestamp, options) {
+  let date = new Date(timestamp);
   
+  if (options.year !== undefined) date.setFullYear(options.year);
+  if (options.month !== undefined) date.setMonth(options.month);
+  if (options.date !== undefined) date.setDate(options.date);
+  if (options.hour !== undefined) date.setHours(options.hour);
+  if (options.minute !== undefined) date.setMinutes(options.minute);
+  
+  return getAppointmentDetails(date.toISOString());
 }
 
 /**
@@ -56,7 +64,7 @@ export function updateAppointment(timestamp, options) {
  * @returns {number} amount of seconds (rounded)
  */
 export function timeBetween(timestampA, timestampB) {
-  // return new Date(timestampA).getTime() -  new Date(timestampB).getTime()
+  return Math.round((new Date(timestampB).getTime() - new Date(timestampA).getTime())/ 1000)
 }
 
 /**
@@ -66,5 +74,5 @@ export function timeBetween(timestampA, timestampB) {
  * @param {string} currentTimestamp (ISO 8601)
  */
 export function isValid(appointmentTimestamp, currentTimestamp) {
-  throw new Error('Remove this line and implement the function');
+  return appointmentTimestamp > currentTimestamp
 }
