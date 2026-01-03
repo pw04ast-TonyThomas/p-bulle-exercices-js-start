@@ -39,8 +39,7 @@ export function buildBirthdaySign(age) {
  */
 
 export function graduationFor(name, year) {
-  return `Congratulations ${name}!
-Class of ${year}`
+  return `Congratulations ${name}!\nClass of ${year}`
 }
 
 /**
