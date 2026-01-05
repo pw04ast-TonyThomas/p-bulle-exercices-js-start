@@ -3,6 +3,13 @@
 // convenience to get you started writing code faster.
 //
 
-export const toRna = () => {
-  throw new Error('Remove this line and implement the function');
+export const toRna = (dna) => {
+  let rna = ''
+  String(dna).split('').forEach(element => {
+    if (element === 'G') rna += 'C'
+    else if (element === 'C') rna += 'G'
+    else if (element === 'T') rna += 'A'
+    else if (element === 'A') rna += 'U'
+  });
+  return rna
 };
