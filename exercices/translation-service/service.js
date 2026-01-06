@@ -1,4 +1,7 @@
 /// <reference path="./global.d.ts" />
+
+import { Untranslatable } from "./errors";
+
 // @ts-check
 //
 // The lines above enable type checking for this file. Various IDEs interpret
@@ -73,21 +76,16 @@ export class TranslationService {
    * @returns {Promise<void>}
    */
   request(text) {
-    const promise = () => new Promise((resolve, reject) => {
+    const requestPromise = () => new Promise((resolve, reject) => {
       this.api.request(text, (result) => {
-        result ? reject(result) : resolve();
+        if (!result) {
+          resolve(result)
+        }
+        else reject(result)
       })
     })
 
-    return promise()
-    // const promise1 = new Promise((resolve, reject) => {
-    //   if (attemptNb < 3){
-    //   this.api.fetch(text)
-    //   attemptNb++
-    //   }
-    // })
-
-    // promise1.catch(this.request)
+    return requestPromise().catch(requestPromise).catch(requestPromise) // Réessaie 2 fois après
   }
 
   /**
@@ -100,8 +98,31 @@ export class TranslationService {
    * @param {number} minimumQuality
    * @returns {Promise<string>}
    */
-  premium(text, minimumQuality) {
-    throw new Error('Implement the premium function');
+  premium(text, minimumQuality) {    
+    // return this.api.fetch(text).catch((result) => {
+    //   if (result === Error) {
+    //     this.request(text, (secondResult) => {
+    //       if (secondResult) {
+    //         this.api.fetch(text).then((translationResult) => {
+    //           if (translationResult.quality > minimumQuality) {
+    //             return result.translation
+    //           }
+    //           else throw new QualityThresholdNotMet()
+    //         })
+    //       }
+    //     })
+    //   }
+    // })
+
+    return this.api.fetch(text).catch(() => {
+      return this.request(text).then(() => this.api.fetch(text))
+    })
+    .then((result) => {
+      if (result.quality > minimumQuality) {
+        return result.translation
+      }
+      else throw new QualityThresholdNotMet()
+    })
   }
 }
 
