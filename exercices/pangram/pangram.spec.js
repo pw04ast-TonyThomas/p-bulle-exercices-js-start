@@ -15,7 +15,7 @@ describe("Pangram()", () => {
   });
 
   test("missing the letter 'x'", () => {
-    expect(
+     expect(
       isPangram("a quick movement of the enemy will jeopardize five gunboats")
     ).toBe(false);
   });
