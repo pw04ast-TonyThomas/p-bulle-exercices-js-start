@@ -4,5 +4,17 @@
 //
 
 export const hey = (message) => {
-  throw new Error('Remove this line and implement the function');
+  if (String(message).trim().endsWith("?") && message === String(message).toUpperCase() && String(message).isWellFormed()) {
+    return "Calm down, I know what I'm doing!"
+  }
+  else if (String(message).trim().endsWith("?")) {
+    return "Sure."
+  }
+  else if (message === String(message).toUpperCase()) {
+    return "Whoa, chill out!"
+  }
+  else if (String(message).trim() === message) {
+    return "Fine. Be that way!"
+  }
+  else return "Whatever."
 };
