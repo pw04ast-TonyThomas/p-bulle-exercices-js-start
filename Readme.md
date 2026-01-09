@@ -86,6 +86,16 @@ Pour bien développer, il faut de bons outils. Parmi ceux-cis, il y a naturellem
 
 Bon débogage
 
+## Journal de travail
+
+Un script Python peut être lancer pour générer un fichier Markdown et un fichier texte du JDT dans un dossier JDT. Le fichier texte est crée pour le convertir en fichier audio en utilisant : **https://voicegenerator.io/**
+
+### Lancer le fichier Python
+
+```bash
+python "JDT Generator.py"
+```
+
 ## Sources
 
 © 2021 Exercism — MIT License.
